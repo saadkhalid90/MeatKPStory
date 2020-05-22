@@ -1,0 +1,154 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Cattle Value Chain</title>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+  <script src="//d3js.org/topojson.v1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="JS/legends.js"></script>
+</head>
+<style media="screen">
+  .root {
+    position: relative;
+  }
+  h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 32px;
+    color: #DF4F57;
+    font-weight: 500;
+  }
+
+  h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    color: #DF4F57;
+    font-weight: 500;
+  }
+
+  div.descriptContain {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  div.descriptContain p {
+        color: #212121;
+  }
+
+  div.sHMapContain {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  div.descriptContain p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 21%;
+    margin-right: 21%;
+  }
+
+  g.circLegGroup {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  g.legendOrdinal {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+  }
+
+  .legendTitle {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  span.varName {
+    font-weight: bold;
+  }
+
+  div.tooltip {
+    text-align: center;
+  }
+
+  div.tooltip p{
+    margin: 10px 10px 10px 10px;
+  }
+
+  div.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dataText {
+    color: #DF4F57;
+    font-weight: 500;
+  }
+
+</style>
+<body>
+  <div class="root">
+    <div class="headingContain">
+      <h1>Meat loving Khyber Pakhtunkhwa</h1>
+    </div>
+    <div class="descriptContain">
+      <p>
+        Meat is an important part of the diet and culture of the inhabitants of Khyber Pakhtunkhwa (KP) province in Pakistan. The PAFAID aims to target meat value chain actors in Abbottabad, D.I. Khan, Kohistan and Peshawar districts within Khyber Pakhtunkhwa.
+      </p>
+      <p>
+        Within these districts, <span class="dataText">12000</span> people make their living as part of the cattle meat value chain, working as herders, middlemen, animal processors in slaughterhouses or butchers.In the inception phase of the project populations of the various value chain actors/ components including cattle farmers, butcher-shops, middlemen and slaughter-houses were estimated and a proportional sample was drawn for a baseline survey. The samples drawn at the tehsil level in the four districts are visualized below.
+      </p>
+    </div>
+    <div class="popVizContain">
+      <svg class ="popVizSVG" width = "600px" viewBox = "0 0 600 720"></svg>
+    </div>
+    <div class="descriptContain">
+      <p>
+        Even though women and youth are actively involved in the cattle value chain, they very often remain economically excluded or not earning the same wage as their male colleagues. The Global Wage Report 2018/2019 of ILO also found women in Pakistan constitute 90% of the bottom 1% of wage earners in the country. The report also highlights the wage and gender wage gap situation in Pakistan. According to the report, Pakistan has the second highest overall hourly average (mean) gender pay gap of the 73 countries for which comparable data are available. In particular the gender pay gap for Pakistan was identified to be <span class="dataText">34 per cent</span>, which is more than double the global average.
+      </p>
+    </div>
+    <div class="sHMapContain">
+      <svg class ="genderGap" width = "600px" viewBox = "0 0 600 420"></svg>
+    </div>
+
+    <div class="descriptContain">
+      <p>
+        Even though there are <span class="dataText">39</span> slaughterhouses in Khyber Pakhtunkhwa, out of which only <span class="dataText">30</span> operate at the moment, compliance level with food safety requirements is relatively low. To date <span class="dataText">none</span> of the slaughterhouses in Khyber Pakhtunkhwa have been able to comply with national and international requirements.
+      </p>
+    </div>
+    <div class="gGapContain">
+      <svg class ="sHMap" width = "550px" viewBox = "0 0 500 600"></svg>
+    </div>
+    <div class="descriptContain">
+      <p>
+        Results from PAFAID’s initial survey suggest that out of the <span class="dataText">10</span> slaughterhouses in the four selected districts, <span class="dataText">6 (60%)</span> report no compliance to HACCP whereas <span class="dataText">4 (40%)</span> report no compliance towards either GMP or HACCP. Moroever, only <span class="dataText">10%</span> Butcher-shops reported exporting meat whereas <span class="dataText">no</span> slaughterhouse reported doing so. As a result of lack of compliance and regulatory issues, locally processed meat cannot be sold in high end markets, resulting in loss of potential economic benefits for the herders and other actors in the cattle meat value chain.
+      </p>
+      <p>
+        Like Slaughterhouses, butcher shops also compromise on compliance and are unable to comply with food safety requirements as required by local and international regulations. This is despite a strong network of inspectors who follow up with butcher shops. Unhygienic conditions can potentially put the lives of innumerable consumers in Khyber Pakhtunkhwa at risk. Meat sold in unhygienic conditions can lead to severe illnesses, creating productivity loss in the form of higher health care costs and inability to work in the amount of <span class="dataText">$1.5 billion</span> per year (Source: <i>The World Bank: The Safe Food Imperative)</i>.
+      </p>
+      <p>
+        Many of the butcher shops that process and sell meat also do not have access to  electricity, clean running water and adequate cold storage, thus compromising hygiene as well as market competitiveness.
+      </p>
+    </div>
+    <h3>Viz on electricity and water access</h3>
+    <div class="descriptContain">
+      <p>
+        The global halal food market reached a value of <span class="dataText">US$ 1.6 Trillion</span> in 2018. By 2030, the market is projected to  become a multi-trillion dollar sector serving billions of consumers. Investing in meeting national and international requirements is a big untapped economic opportunity for Pakistan, especially for the KP province. <strong>A line about how PAFAID helps tapping this opportunity</strong>
+      </p>
+      <p>
+        If you want to learn more about our project and hear about upcoming events, please subscribe to our monthly newsletter or visit our website <a href="https://www.pafaid.org">www.pafaid.org</a>
+      </p>
+
+    </div>
+
+
+
+  </div>
+
+  <script src="JS/popMap.js"></script>
+  <script src="JS/sHMap.js"></script>
+  <script src="JS/gGap.js"></script>
+</body>
+</html>
+<!DOCTYPE html>

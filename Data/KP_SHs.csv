@@ -1,0 +1,26 @@
+province_territory,districts,NEIGHBORS,SHs,FuncSHs,NonFuncSHs,CanttSHs,X,Y
+Khyber Pakhtunkhwa,Abbottabad,"Haripur,Rawalpindi,Bagh,Muzaffarabad,Mansehra",5,3,1,1,73.27571282,34.09719491
+Khyber Pakhtunkhwa,Bannu,"FR Bannu,FR Lakki Marwat,Karak,Lakki Marwat,South Waziristan Agency",1,1,0,0,70.65574494,32.9213904
+Khyber Pakhtunkhwa,Batagram,"Shangla,Kohistan,Tor Ghar,Mansehra",0,0,0,0,73.13144223,34.78376913
+Khyber Pakhtunkhwa,Buner,"Haripur,Swabi,Mardan,Malakand,Swat,Shangla,Tor Ghar",1,0,1,0,72.51077464,34.46194148
+Khyber Pakhtunkhwa,Charsadda,"Mohmand Agency,Peshawar,Nowshera,Mardan,Malakand",3,0,3,0,71.7253786,34.25030133
+Khyber Pakhtunkhwa,Chitral,"Upper Dir,Swat,Ghizer",1,1,0,0,72.22549992,36.22768513
+Khyber Pakhtunkhwa,D.I.Khan,"Mianwali,Tank,Lakki Marwat,South Waziristan Agency,FR DI Khan,Bhakkar,Layyah,Dera Ghazi Khan",3,3,0,0,70.69633996,31.87020426
+Khyber Pakhtunkhwa,Hangu,"Kohat,FR Bannu,Kurram Agency,North Waziristan Agency,Karak,Orakzai Agency",2,2,0,0,70.82664482,33.42616791
+Khyber Pakhtunkhwa,Haripur,"Attock,Islamabad,Swabi,Rawalpindi,Abbottabad,Buner,Tor Ghar,Mansehra",1,1,0,0,72.89410798,34.01390655
+Khyber Pakhtunkhwa,Karak,"Kohat,Mianwali,FR Bannu,Hangu,Bannu,Lakki Marwat",0,0,0,0,71.11018817,33.14030579
+Khyber Pakhtunkhwa,Kohat,"FR Kohat,FR Peshawar,Mianwali,Attock,Nowshera,Hangu,Karak,Orakzai Agency",1,1,0,0,71.53235482,33.46094721
+Khyber Pakhtunkhwa,Kohistan,"Swat,Ghizer,Shangla,Mansehra,Diamir,Batagram",0,0,0,0,73.22670032,35.32213629
+Khyber Pakhtunkhwa,Lakki Marwat,"Mianwali,Bannu,FR Lakki Marwat,Karak,Tank,FR Tank,Dera Ismail Khan",1,0,1,0,70.83685655,32.59990077
+Khyber Pakhtunkhwa,Lower Dir,"Bajaur Agency,Upper Dir,Malakand,Swat",4,4,0,0,71.85065703,34.83517822
+Khyber Pakhtunkhwa,Malakand,"Mohmand Agency,Bajaur Agency,Charsadda,Buner,Mardan,Lower Dir,Swat",0,0,0,0,71.90194885,34.53779473
+Khyber Pakhtunkhwa,Mansehra,"Haripur,Abbottabad,Muzaffarabad,Kohistan,Tor Ghar,Diamir,Neelum,Batagram",1,1,0,0,73.42783692,34.6544237
+Khyber Pakhtunkhwa,Mardan,"Charsadda,Swabi,Nowshera,Buner,Malakand",2,1,1,0,72.10433552,34.31175229
+Khyber Pakhtunkhwa,Nowshera,"FR Peshawar,Charsadda,Kohat,Peshawar,Attock,Swabi,Mardan",4,1,1,2,71.98319535,33.9283044
+Khyber Pakhtunkhwa,Peshawar,"Mohmand Agency,FR Kohat,FR Peshawar,Charsadda,Nowshera,Khyber Agency",2,1,1,0,71.56610362,33.97785255
+Khyber Pakhtunkhwa,Shangla,"Buner,Swat,Kohistan,Tor Ghar,Batagram",0,0,0,0,72.72951132,34.85012492
+Khyber Pakhtunkhwa,Swabi,"Attock,Haripur,Nowshera,Buner,Mardan",2,2,0,0,72.44935158,34.13030812
+Khyber Pakhtunkhwa,Swat,"Buner,Chitral,Lower Dir,Upper Dir,Malakand,Ghizer,Shangla,Kohistan",2,2,0,0,72.46552681,35.24934656
+Khyber Pakhtunkhwa,Tank,"FR Tank,Lakki Marwat,South Waziristan Agency,Dera Ismail Khan",0,0,0,0,70.39813673,32.25020983
+Khyber Pakhtunkhwa,Tor Ghar,"Haripur,Buner,Shangla,Mansehra,Batagram",0,0,0,0,72.82484154,34.54002266
+Khyber Pakhtunkhwa,Upper Dir,"Chitral,Lower Dir,Swat",3,2,1,0,72.03430728,35.28257257
