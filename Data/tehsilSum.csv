@@ -1,0 +1,11 @@
+district,districtShow,tehsil,meanElec,meanWater,meanStorage,nObs
+Abbottabad,1,Abbottabad,100,75.80645161,46.77419355,62
+,0,Havelian,100,52.38095238,52.38095238,21
+D.I.Khan,1,Daraban,0,0,0,5
+,0,D.I.Khan,45.94594595,54.05405405,21.62162162,37
+,0,Kulachi,0,0,0,5
+,0,Pahar pur,15,15,0,20
+,0,Paroa,26.66666667,33.33333333,0,15
+Kohistan,1,Dassu,100,33.33333333,100,3
+,0,Pattan,66.66666667,66.66666667,33.33333333,3
+Peshawar,1,Peshawar,100,100,96.55172414,87
