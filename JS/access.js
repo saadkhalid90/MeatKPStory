@@ -211,7 +211,7 @@ function drawAccessHM(){
       let rectHeight = 5;
 
       let barG = selector.append('g')
-                          .attr('class', 'legendGroup')
+                          .attr('class', 'contLegGroup')
                           .attr('transform', `translate(${position[0]}, ${position[1]})`);
 
 

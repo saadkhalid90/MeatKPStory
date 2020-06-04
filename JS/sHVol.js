@@ -1,18 +1,15 @@
-function drawPopMap(){
+function drawSurveySH(){
   const projection = d3.geoMercator()
       .center([74.3, 34])
       .scale([150 * 30]);
 
   const path = d3.geoPath().projection(projection);
-  const svg = d3.select('svg.popVizSVG')
+  const svg = d3.select('svg.sHVol')
                 // .append('g')
                 // .attr('class', 'vizGrid')
                 // .attr('transform', 'translate(0, 50)');
-  // const width = getPxAttr(svg, 'width');
-  // const height = getPxAttr(svg, 'height');
-
   const width = 600;
-  const height = 700;
+  const height = 720;
 
   const svgG = svg.append('g')
                 .attr('class', 'vizGrid')
@@ -25,15 +22,8 @@ function drawPopMap(){
     'dikhan': `translate(-175, -590) scale(1.6)`
   }
 
-  const VCAObj = {
-    Farmers: "Farmers",
-    SlaughterHouses: "Slaughter-houses",
-    ButcherShops: "Butcher-shops",
-    Middlemen: "Middlemen"
-  }
-
   async function readAndDraw(){
-    let popData = await d3.csv('Data/CattleVCPop.csv');
+    let SHData = await d3.csv('Data/SH.csv');
     //let geoData = await d3.json('KP_CVC.topojson');
     let kohistan = await getGeoData('GeoData/kohistan.topojson', 'kohistan');
     let peshawar = await getGeoData('GeoData/Peshawar.topojson', 'Peshawar');
@@ -45,14 +35,41 @@ function drawPopMap(){
     svg.append('text')
       .attr('class', 'title')
       .attr('x', '300px')
-      .attr('y', '25px')
-      .text('Tehsil-wise Sample Sizes of Major Meat Value Chain Actors')
+      .attr('y', '15px')
+      .text('Capacity of Slaughter-houses')
       .styles(
         {
           'text-anchor': 'middle',
-          'font-size': '20px',
+          'font-size': '18px',
+          'font-family': "'Roboto', sans-serif"
+        }
+      );
+
+    svg.append('text')
+      .attr('class', 'sub-title')
+      .attr('x', '300px')
+      .attr('y', '35px')
+      .text('Ruminants Slaughtered Per Day')
+      .styles(
+        {
+          'text-anchor': 'middle',
+          'font-size': '12px',
           'font-family': "'Roboto', sans-serif",
-          'font-weight': 400
+          'font-weight': 300
+        }
+      );
+
+    svg.append('text')
+      .attr('class', 'bottom-note')
+      .attr('x', '300px')
+      .attr('y', '710px')
+      .text('The bubbles corrresponding to each Slaughter-house do not show exact geo-location as they have been offset to avoid overlap')
+      .styles(
+        {
+          'text-anchor': 'middle',
+          'font-size': '9px',
+          'font-family': "'Roboto', sans-serif",
+          'font-weight': 300
         }
       );
 
@@ -72,7 +89,6 @@ function drawPopMap(){
       .attr('transform', (d, i) => `translate(${slotTx[i][0]}, ${slotTx[i][1]})`);
 
     function appMapPaths(gSelect, geoData, txString, styleObj, rect, label, HQLoc, scaleFactor, HQName, HQNameTx){
-      // a rectangle to test if the path is centered
       if (rect){
         gSelect.append('rect')
               .attrs({
@@ -109,7 +125,7 @@ function drawPopMap(){
             fill: 'black',
             'text-anchor': 'middle',
             'font-family': "'Roboto', sans-serif",
-            'font-size': '14px',
+            'font-size': '13px',
             'font-weight': 300
           })
 
@@ -124,6 +140,9 @@ function drawPopMap(){
               r: d => 4/scaleFactor,
               transform: txString
             })
+            .styles({
+              fill: 'grey',
+            })
 
       HQGrp.append('circle')
             .attrs({
@@ -135,7 +154,7 @@ function drawPopMap(){
             })
             .styles({
               fill: 'none',
-              stroke: 'black',
+              stroke: 'grey',
               'stroke-width': 1/scaleFactor
             })
 
@@ -157,61 +176,71 @@ function drawPopMap(){
     }
 
     const radScale1 = d3.scaleSqrt()
-                        .domain([0, 100])
-                        .range([0, 20]);
+                        .domain([0, 150])
+                        .range([0, 10]);
 
     const radScale2 = d3.scaleSqrt()
                         .domain([0, 4])
                         .range([0, 10]);
 
-    makeNestCircLegend(CSSSelect = 'svg', [100, 650], [10, 40, 100], radScale1, ['Farmers and', 'Butcher-shops']);
-    makeNestCircLegend(CSSSelect = 'svg', [280, 650], [1, 4], radScale2, ['Slaughter-houses', 'and Middlemen']);
+    const bubOffset = 0.2;
 
-    const ordCol = d3.scaleOrdinal()
-      .domain(["Farmers", "Butcher-shops", "Slaughter-Houses", "Middlemen"])
-      .range(['#a6cee3','#1f78b4','#b2df8a', '#33a02c']);
+    let colScaleCont = d3.scaleSequential(d3.interpolatePuOr)
+        .domain([80, 20]);
 
-    svg.append("g")
-      .attr("class", "legendOrdinal")
-      .attr("transform", "translate(400,630)");
+    let simulation = d3.forceSimulation(SHData)
+        .force("x", d3.forceX(function(d) { return projection( [+d.X, +d.Y] )[0]; }).strength(0.2))
+        .force("y", d3.forceY(function(d) { return projection( [+d.X, +d.Y] )[1]; }).strength(0.2))
+        //.force('charge', d3.forceManyBody().strength(0.5))
+        .force("collision", d3.forceCollide().radius(d => (radScale1(+d['total_Animals'])/d.scaleFactor) + bubOffset /*+ centuryScale(getHCUnits(d, false))*/))
+        .stop();
 
-    const legendOrdinal = d3.legendColor()
-      .shapePadding(1)
-      //use cellFilter to hide the "e" cell
-      .scale(ordCol);
+    // let the simulation run
+    for (var i = 0; i < 5000; ++i) simulation.tick();
 
-    svg.select(".legendOrdinal")
-      .call(legendOrdinal);
+    console.log(SHData);
+
+    makeNestCircLegend(CSSSelect = 'svg.sHVol', [130, 650], [50, 200, 400], radScale1, 'Animals Slaughtered (Per day)');
+    drawContLegend(
+      svg,
+      [400, 650], 20, 80,
+      [colScaleCont(20), colScaleCont(80)],
+      'black',
+      `Percentage of small ruminants`
+    );
 
     function appBubbles(gSelect, data, dataAcc, txString, StyleObj, dithArr, sh, scale){
       gSelect.append('g')
             .attr('class', 'bubbleGroup')
-            .selectAll('circle.popBubble')
-            .data(data)
+            .selectAll('circle.shBubble')
+            .data(data.sort(function(a, b) {
+                return b[dataAcc] - a[dataAcc];
+            }))
             .enter()
             .append('circle')
-            .classed('popBubble', true)
-            .classed(dataAcc, true)
+            .classed('shBubble', true)
             .attrs({
-              cx: d => projection([+d.X, +d.Y])[0] + dithArr[0],
-              cy: d => projection([+d.X, +d.Y])[1] + dithArr[1],
+              // cx: d => projection([+d.x, +d.y])[0] + dithArr[0],
+              // cy: d => projection([+d.x, +d.y])[1] + dithArr[1],
+              cx: d => d.x,
+              cy: d => d.y,
               r: d => sh ? radScale2(+d[dataAcc])/scale : radScale1(+d[dataAcc])/scale,
               transform: txString
             })
             .styles(StyleObj)
-            .style('stroke-width', '0.5px')
-            .style('stroke-opacity', 0.5)
-            .style('stroke', '#212121');
+            .style('stroke-width', '0.3px')
+            .style('stroke-opacity', 0.7)
+            .style('stroke', '#424242');
     }
 
-    const shFillOpac = 0.85;
+    const shFillOpac = 0.9;
 
     appMapPaths(
       svgG.select('g#id1'),
       kohistan,
       txObj['kohistan'],
       {
-        fill: d => d.properties.TEHSIL == 'DASSU' ? '#ccc' : '#ccc',
+        fill: '#ccc',
         'fill-opacity': 0.8
       },
       false,
@@ -222,50 +251,21 @@ function drawPopMap(){
       [6, 0]
     );
 
-    appBubbles(
-      svgG.select('g#id1'),
-      popData.filter(d => d.District == 'Kohistan'),
-      'Farmers',
-      txObj['kohistan'],
-      {
-        fill: '#a6cee3',
-        'fill-opacity': shFillOpac,
-        stroke: 'black',
-      },
-      [5, 2],
-      false,
-      1.6
-    );
+    // appBubbles(
+    //   svgG.select('g#id1'),
+    //   popData.filter(d => d.District == 'Kohistan'),
+    //   'Farmers',
+    //   txObj['kohistan'],
+    //   {
+    //     fill: '#a6cee3',
+    //     'fill-opacity': shFillOpac,
+    //     stroke: 'black',
+    //   },
+    //   [0, 0],
+    //   false,
+    //   1.6
+    // );
 
-    appBubbles(
-      svgG.select('g#id1'),
-      popData.filter(d => d.District == 'Kohistan'),
-      'ButcherShops',
-      txObj['kohistan'],
-      {
-        fill: '#1f78b4',
-        'fill-opacity': shFillOpac,
-        stroke: 'black'
-      },
-      [-5, -2],
-      false,
-      1.6
-    );
-
-    appBubbles(
-      svgG.select('g#id1'),
-      popData.filter(d => d.District == 'Kohistan'),
-      'Middlemen',
-      txObj['kohistan'],
-      {
-        fill: '#33a02c',
-        'fill-opacity': shFillOpac,
-        stroke: 'black'
-      },
-      [-2, 7],
-      true,
-      1.6
-    );
 
     appMapPaths(
       svgG.select('g#id2'),
@@ -285,70 +285,26 @@ function drawPopMap(){
 
     appBubbles(
       svgG.select('g#id2'),
-      popData.filter(d => d.District == 'Peshawar'),
-      'Farmers',
+      SHData.filter(d => d.district == 'Peshawar'),
+      'total_Animals',
       txObj['peshawar'],
       {
-        fill: '#a6cee3',
+        fill: d => colScaleCont((d.small_ruminant/ d.total_Animals)*100),
         'fill-opacity': shFillOpac,
         stroke: 'black'
       },
-      [1, 6],
+      [0, 0],
       false,
       2.7
     )
 
-    appBubbles(
-      svgG.select('g#id2'),
-      popData.filter(d => d.District == 'Peshawar'),
-      'ButcherShops',
-      txObj['peshawar'],
-      {
-        fill: '#1f78b4',
-        'fill-opacity': shFillOpac,
-        stroke: 'black'
-      },
-      [-1, -6],
-      false,
-      2.7
-    );
-
-    appBubbles(
-      svgG.select('g#id2'),
-      popData.filter(d => d.District == 'Peshawar'),
-      'SlaughterHouses',
-      txObj['peshawar'],
-      {
-        fill: '#b2df8a',
-        'fill-opacity': shFillOpac,
-        stroke: 'black'
-      },
-      [8, -1],
-      true,
-      2.7
-    );
-
-    appBubbles(
-      svgG.select('g#id2'),
-      popData.filter(d => d.District == 'Peshawar'),
-      'Middlemen',
-      txObj['peshawar'],
-      {
-        fill: '#33a02c',
-        'fill-opacity': shFillOpac,
-        stroke: 'black'
-      },
-      [-8, 1],
-      true,
-      2.7
-    );
 
     appMapPaths(
       svgG.select('g#id3'),
       abbotabad,
       txObj['abbotabad'],
       {
-        fill: d => d.properties.TEHSIL == 'ABBOTTABAD' ? '#ccc' : '#ccc',
+        fill: '#ccc',
         'fill-opacity': 0.8
       },
       false,
@@ -361,61 +317,16 @@ function drawPopMap(){
 
     appBubbles(
       svgG.select('g#id3'),
-      popData.filter(d => d.District == 'Abbotabad'),
-      'Farmers',
+      SHData.filter(d => d.district == 'Abbottabad'),
+      'total_Animals',
       txObj['abbotabad'],
       {
-        fill: '#a6cee3',
+        fill: d => colScaleCont((d.small_ruminant/ d.total_Animals)*100),
         'fill-opacity': shFillOpac,
         stroke: 'black'
       },
-      [4, 1.5],
+      [0, 0],
       false,
-      2.7
-    );
-
-    appBubbles(
-      svgG.select('g#id3'),
-      popData.filter(d => d.District == 'Abbotabad'),
-      'ButcherShops',
-      txObj['abbotabad'],
-      {
-        fill: '#1f78b4',
-        'fill-opacity': shFillOpac,
-        stroke: 'black'
-      },
-      [-4, -1.5],
-      false,
-      2.7
-    );
-
-    appBubbles(
-      svgG.select('g#id3'),
-      popData.filter(d => d.District == 'Abbotabad'),
-      'SlaughterHouses',
-      txObj['abbotabad'],
-      {
-        fill: '#b2df8a',
-        'fill-opacity': shFillOpac,
-        stroke: 'black'
-      },
-      [-2, 6],
-      true,
-      2.7
-    );
-
-    appBubbles(
-      svgG.select('g#id3'),
-      popData.filter(d => d.District == 'Abbotabad'),
-      'Middlemen',
-      txObj['abbotabad'],
-      {
-        fill: '#33a02c',
-        'fill-opacity': shFillOpac,
-        stroke: 'black'
-      },
-      [2, -6],
-      true,
       2.7
     );
 
@@ -424,7 +335,7 @@ function drawPopMap(){
       dikhan,
       txObj['dikhan'],
       {
-        fill: d => d.properties.TEHSIL == 'D.I.KHAN' ? '#ccc' : '#ccc',
+        fill: '#ccc',
         'fill-opacity': 0.8
       },
       false,
@@ -437,84 +348,40 @@ function drawPopMap(){
 
     appBubbles(
       svgG.select('g#id4'),
-      popData.filter(d => d.District == 'D.I.Khan'),
-      'Farmers',
+      SHData.filter(d => d.district == 'D.I.Khan'),
+      'total_Animals',
       txObj['dikhan'],
       {
-        fill: '#a6cee3',
+        fill: d => colScaleCont((d.small_ruminant/ d.total_Animals)*100),
         'fill-opacity': shFillOpac,
         stroke: 'black'
       },
-      [2.5, -4],
+      [0, 0],
       false,
       1.6
     );
 
-    appBubbles(
-      svgG.select('g#id4'),
-      popData.filter(d => d.District == 'D.I.Khan'),
-      'ButcherShops',
-      txObj['dikhan'],
-      {
-        fill: '#1f78b4',
-        'fill-opacity': shFillOpac,
-        stroke: 'black'
-      },
-      [-2.5, 4],
-      false,
-      1.6
-    );
-
-    appBubbles(
-      svgG.select('g#id4'),
-      popData.filter(d => d.District == 'D.I.Khan'),
-      'SlaughterHouses',
-      txObj['dikhan'],
-      {
-        fill: '#b2df8a',
-        'fill-opacity': shFillOpac,
-        stroke: 'black'
-      },
-      [5, 5],
-      true,
-      1.6
-    );
-
-    appBubbles(
-      svgG.select('g#id4'),
-      popData.filter(d => d.District == 'D.I.Khan'),
-      'Middlemen',
-      txObj['dikhan'],
-      {
-        fill: '#33a02c',
-        'fill-opacity': shFillOpac,
-        stroke: 'black'
-      },
-      [-5, -5],
-      true,
-      1.6
-    );
-
-    svgG.selectAll('circle.popBubble').on('mouseover', function(d, i){
+    svgG.selectAll('circle.shBubble').on('mouseover', function(d, i){
       const datum = d3.select(this).datum();
-      const className = d3.select(this).attr('class').replace("popBubble ", "")
-      const tehsil = datum['Tehsil'];
-      const VCA = VCAObj[className];
-      const datumOfInt = datum[className];
-
       const eventX = d3.event.x;
       const eventY = d3.event.y;
 
-
-      console.log(eventX, eventY);
-      d3.select('div.popVizContain').append('div')
+      //d3.select('div.popVizContain')
+      d3.select('body')
+                      .append('div')
                       .classed('tooltip', true)
                       .html(
                         d =>
                         `
                           <p>
-                            <span class='varName'>Tehsil</span>: <span>${tehsil}</span><br>
-                            <span class='varName'>${VCA}</span>: <span>${datumOfInt}</span><br>
+                            <span class='varName'>Ownership: </span> <span>${datum.owns_slaughterhouse}</span><br>
+                            <span class='varName'>Animals Slaughtered: </span> <span>${datum.total_Animals}</span><br>
+                            <span class='varName'>Small Animals: </span> <span>${datum.small_ruminant}</span><br>
+                            <span class='varName'>Big Animals: </span> <span>${datum.big_ruminant}</span><br>
+                            <span class='varName'></span><br>
+                            <span class='categName'>FOOD SAFETY</span><br>
+                            <span class='varName'>Good Manufacturing: </span> <span class=${(datum.food_safetygood_manufactu == 1) ? 'spanYes' : 'spanNo'}>${(datum.food_safetygood_manufactu == 1) ? 'Yes' : 'No'}</span><br>
+                            <span class='varName'>HACCP: </span> <span class=${(datum.food_safetyhaccp == 1) ? 'spanYes' : 'spanNo'}>${(datum.food_safetyhaccp == 1) ? 'Yes' : 'No'}</span>
                           </p>
                         `
                       )
@@ -527,36 +394,33 @@ function drawPopMap(){
                         'border-color': '#212121',
                         opacity: 0.9,
                         'font-family': "'Roboto', sans-serif",
-                        'font-size': '13px'
+                        'font-size': '10px'
                       })
 
     });
 
-    svgG.selectAll('circle.popBubble').on('mouseout', function(d, i){
-
-      d3.select('div.popVizContain').select('div.tooltip')
-                       .remove();
+    svgG.selectAll('circle.shBubble').on('mouseout', function(d, i){
+      //d3.select('div.popVizContain')
+      d3.select('body')
+        .select('div.tooltip')
+        .remove();
 
     })
+
 
   }
 
   readAndDraw();
 
-
-
   async function getGeoData(topoJSONFilename, getName){
     const JSON = await d3.json(topoJSONFilename);
+    console.log(JSON);
     return topojson.feature(JSON, JSON.objects[getName]).features;
   }
 
   function getPxAttr(selection, attribute){
     return +selection.attr(attribute).replace('px', '')
   }
-
-  function round2Dec(number, digits){
-    return Math.round(number * 10**digits)/(10**digits);
-  }
 }
 
-drawPopMap();
+drawSurveySH();
