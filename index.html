@@ -5,117 +5,35 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
   <script src="//d3js.org/topojson.v1.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="JS/legends.js"></script>
+  <link rel="stylesheet" type="text/css" href="index.css">
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
+
 </head>
-<style media="screen">
-  .root {
-    position: relative;
-  }
-  h1 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 32px;
-    color: #DF4F57;
-    font-weight: 500;
-  }
-
-  h3 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 22px;
-    color: #DF4F57;
-    font-weight: 500;
-  }
-
-  div.descriptContain {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
-  div.descriptContain p {
-        color: #212121;
-  }
-
-  div.sHMapContain {
-    font-family: 'Roboto', sans-serif;
-  }
-
-  div.descriptContain p {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 21%;
-    margin-right: 21%;
-  }
-
-  g.circLegGroup {
-    font-family: 'Roboto', sans-serif;
-  }
-
-  g.legendOrdinal {
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;
-  }
-
-  .legendTitle {
-    font-family: 'Roboto', sans-serif;
-  }
-
-  span.varName {
-    font-weight: bold;
-  }
-
-  span.categName {
-    color: #311B92;
-    font-weight: bold;
-    font-size: 10px;
-  }
-  span.spanYes {
-    color: blue;
-  }
-  span.spanNo {
-    color: red;
-  }
-
-  div.tooltip {
-    text-align: center;
-  }
-
-  div.tooltip p{
-    margin: 10px 10px 10px 10px;
-  }
-
-  div.root {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .dataText {
-    color: #DF4F57;
-    font-weight: 500;
-  }
-
-  g.contLegGroup text {
-    font-family: 'Roboto', sans-serif;
-  }
-
-  div.chartImgContain {
-    display: flex;
-    justify-content: center;
-  }
-
-</style>
 <body>
   <div class="root">
-    <div class="imgContain">
-      <img width = "300px" src="img/logo PAFAID.svg" alt="">
+    <div class="landing_container">
+      <div class="landing_content">
+        <div data-aos="fade-down" data-aos-offset="50" data-aos-duration="1000" data-aos-delay="150" class="imgContain">
+          <img class="pafaid_logo" src="img/logo PAFAID.svg" alt="">
+        </div>
+        <div data-aos="fade" data-aos-duration="1000" data-aos-delay="450" class="headingContain titleHeading">
+          <h1>Meat loving Khyber Pakhtunkhwa</h1>
+        </div>
+      </div>
+      <div  class="scroll_down_div animate__animated animate__fadeInUp animate__delay-1s"><p>Scroll Down</p><span class="material-icons">arrow_circle_down</span></div>
     </div>
-    <div class="headingContain">
-      <h1>Meat loving Khyber Pakhtunkhwa</h1>
-    </div>
+
     <div class="descriptContain">
       <p>
         Meat is an important part of the diet and culture of the inhabitants of Khyber Pakhtunkhwa (KP) province in Pakistan. The PAFAID aims to target meat value chain actors in Abbottabad, D.I. Khan, Kohistan and Peshawar districts within Khyber Pakhtunkhwa.
@@ -124,7 +42,7 @@
         Within these districts, <span class="dataText">12000</span> people make their living as part of the cattle meat value chain, working as herders, middlemen, animal processors in slaughterhouses or butchers.In the inception phase of the project populations of the various value chain actors/ components including cattle farmers, butchers, middlemen and slaughter-houses were estimated and a proportional sample was drawn for a baseline survey. The samples drawn at the tehsil level in the four districts are visualized below.
       </p>
     </div>
-    <div class="popVizContain">
+    <div data-aos="fade" data-aos-duration="1000" data-aos-delay="150" class="popVizContain">
       <svg class ="popVizSVG" width = "600px" viewBox = "0 0 600 720"></svg>
     </div>
     <div class="descriptContain">
@@ -132,7 +50,7 @@
         Even though women and youth are actively involved in the cattle value chain, they very often remain economically excluded or not earning the same wage as their male colleagues. The Global Wage Report 2018/2019 of ILO also reported that women in Pakistan constitute 90% of the bottom 1% of wage earners in the country. The report also highlights the wage and gender wage gap situation in Pakistan. According to the report, Pakistan has the second highest overall hourly average (mean) gender pay gap of the 73 countries for which comparable data are available. In particular the gender pay gap for Pakistan was identified to be <span class="dataText">34 percent</span>, which is more than double the global average.
       </p>
     </div>
-    <div class="gGapContain">
+    <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150" class="gGapContain">
       <svg class ="genderGap" width = "600px" viewBox = "0 0 600 420"></svg>
     </div>
 
@@ -141,7 +59,7 @@
         There are <span class="dataText">39</span> slaughterhouses in Khyber Pakhtunkhwa, out of which only <span class="dataText">30</span> operate at the moment. However, the compliance level  of these slaughterhouses is relatively low. To date <span class="dataText">none</span> of the slaughterhouses in Khyber Pakhtunkhwa have been able to comply with national and international food safety requirements.
       </p>
     </div>
-    <div class="sHMapContain">
+    <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150" class="sHMapContain">
       <svg class ="sHMap" width = "550px" viewBox = "0 0 500 600"></svg>
     </div>
     <div class="descriptContain">
@@ -149,7 +67,7 @@
         Results from PAFAID’s initial survey suggested that out of the 10 slaughterhouses in the four selected districts, <span class="dataText">6 (60%)</span> do not follow any food safety certification requirements or practices in the form of Good hygiene practices (GHP) and Hazard analysis and critical control point (HACCP) whereas <span class="dataText">4 (40%)</span> followed certain guidelines but still not certified for safety and quality at this stage. As a result of lack of compliance and regulatory issues, locally processed meat can not be sold in high-end markets locally or abroad, resulting in loss of potential economic benefits for the actors in the cattle meat value chain.
       </p>
     </div>
-    <div class="sHVolContain">
+    <div data-aos="fade" data-aos-duration="1000" data-aos-delay="150" class="sHVolContain">
       <svg class ="sHVol" width = "600px" viewBox = "0 0 600 720"></svg>
     </div>
     <div class="descriptContain">
@@ -160,7 +78,7 @@
         Like slaughterhouses, butcher shops are also unable to comply with food safety requirements to meet local and international regulations. This is despite a network of diligent inspectors who visit meat related businesses and follow up with them on their practices. The ongoing joint efforts of the Agriculture Department, Local Government Department and Khyber Pakhtunkhwa Food Safety and Halal Food Authority (KPFSHFA) on enforcing existing food safety regulations are acknowledged to help improve food safety conditions of these meat shops, however, further improvement can be considered in this area based on international best practices. Unhygienic conditions in meat shops result in mass consumption of unsafe meat which can potentially put the lives of innumerable consumers in Khyber Pakhtunkhwa at risk. Meat sold in unhygienic conditions can lead to severe foodborne illnesses which in general leads to a productivity loss of <span>$1.5 billion</span> per year in Pakistan through higher health care costs and inability to work or decreased productivity of consumers. (<i>Source: The World Bank: The Safe Food Imperative</i>).
       </p>
     </div>
-    <div class="chartImgContain">
+    <div id="chartContainer" class="chartImgContain">
       <img src="img/BSAccess.png" alt="" width="45%">
     </div>
     <div class="descriptContain">
@@ -184,6 +102,24 @@
 
 
   </div>
+
+  <script>
+    AOS.init();
+
+    window.addEventListener('scroll', function(e) {
+      var top_of_element;
+      var bottom_of_element;
+      var bottom_of_screen;
+      var top_of_screen;
+      top_of_element = $("#chartContainer").offset().top;
+      bottom_of_element = $("#chartContainer").offset().top + $("#chartContainer").outerHeight();
+      bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+      top_of_screen = $(window).scrollTop();
+      if (!(bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)){
+        resetBarTransition();
+      }
+    });
+  </script>
 
   <script src="JS/popMap.js"></script>
   <script src="JS/sHMap.js"></script>
