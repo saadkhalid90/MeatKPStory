@@ -382,7 +382,7 @@ function drawSurveySH(){
                       .styles({
                         position: 'fixed',
                         width: '140px',
-                        left: `${eventX - 60}px`,
+                        left: `${eventX - 70}px`,
                         top: `${eventY + 15}px`,
                         background: '#eee',
                         'border-color': '#212121',

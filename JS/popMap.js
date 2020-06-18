@@ -522,7 +522,7 @@ function drawPopMap(){
 
 
       console.log(eventX, eventY);
-      d3.select('div.popVizContain').append('div')
+      d3.select('body').append('div')
                       .classed('tooltip', true)
                       .html(
                         d =>
@@ -536,7 +536,7 @@ function drawPopMap(){
                       .styles({
                         position: 'fixed',
                         width: '140px',
-                        left: `${eventX - 60}px`,
+                        left: `${eventX - 70}px`,
                         top: `${eventY + 15}px`,
                         background: '#eee',
                         'border-color': '#212121',
@@ -549,7 +549,7 @@ function drawPopMap(){
 
     svgG.selectAll('circle.popBubble').on('mouseout', function(d, i){
 
-      d3.select('div.popVizContain').select('div.tooltip')
+      d3.select('body').select('div.tooltip')
                        .remove();
 
     })
@@ -557,8 +557,6 @@ function drawPopMap(){
   }
 
   readAndDraw();
-
-
 
   async function getGeoData(topoJSONFilename, getName){
     const JSON = await d3.json(topoJSONFilename);

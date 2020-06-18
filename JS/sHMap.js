@@ -165,7 +165,7 @@ function drawSHMap(){
           const eventX = d3.event.x;
           const eventY = d3.event.y;
 
-          d3.select('div.sHMapContain').append('div')
+          d3.select('body').append('div')
                           .classed('tooltip', true)
                           .html(
                             d =>
@@ -181,7 +181,7 @@ function drawSHMap(){
                           .styles({
                             position: 'fixed',
                             width: '150px',
-                            left: `${eventX - 60}px`,
+                            left: `${eventX - 75}px`,
                             top: `${eventY + 15}px`,
                             background: '#eee',
                             'border-color': '#212121',
@@ -194,7 +194,7 @@ function drawSHMap(){
 
         svg.selectAll('circle.shcirc').on('mouseout', function(d, i){
 
-          d3.select('div.sHMapContain').select('div.tooltip')
+          d3.select('body').select('div.tooltip')
                            .remove();
 
         })

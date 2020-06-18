@@ -1,5 +1,6 @@
 function drawAccessBars(){
   async function readAndDraw(){
+    console.log('run!')
     // set the dimensions and margins of the graph
     var margin = {top: 60, right: 30, bottom: 100, left: 70},
         width = 620 - margin.left - margin.right,
@@ -94,6 +95,7 @@ function drawAccessBars(){
         .selectAll("rect")
         .data(function(d) { return subgroups.map(function(key) { return {key: key, value: d[key]}; }); })
         .enter().append("rect")
+          .classed("bar_rect", true)
           .attr("x", function(d) { return xSubgroup(d.key); })
           .attr("y", height)
           .attr("width", xSubgroup.bandwidth())
@@ -127,5 +129,3 @@ function drawAccessBars(){
 
   readAndDraw();
 }
-
-drawAccessBars();

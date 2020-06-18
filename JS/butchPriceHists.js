@@ -153,5 +153,3 @@ function drawButchPriceHists(){
 
   readAndDraw();
 }
-
-drawButchPriceHists();

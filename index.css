@@ -54,6 +54,7 @@ h1 {
   font-size: 32px;
   color: #DF4F57;
   font-weight: 500;
+  text-align: center;
 }
 
 .titleHeading > h1 {
@@ -152,4 +153,182 @@ g.contLegGroup text {
 div.chartImgContain {
   display: flex;
   justify-content: center;
+}
+
+.accessBarsViz {
+  font-family: 'Roboto', sans-serif;
+}
+.accessBarsViz g.axis.x {
+  font-size: 12px;
+}
+
+.accessBarsViz g.axis.y {
+  font-size: 12px;
+}
+
+.accessBarsViz g.legendOrdinal {
+  font-size: 12px;
+}
+
+.accessBarsViz g.axis.y path, line {
+  stroke: none;
+}
+
+.accessBarsViz g.grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+.accessBarsViz g.grid path {
+  stroke: none;
+}
+
+svg.butchPriceHists g.axis path, line {
+  fill: none;
+  stroke: none;
+
+}
+
+svg.butchPriceHists g.axis {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+}
+
+.meatImgContain {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #eee;
+  margin: 30px 0px;
+}
+
+.meatImgContain > img {
+  width: 50%;
+  filter: grayscale(1);
+}
+
+.footer {
+  padding: 40px;
+  background: #eee;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pafaid_logo_footer {
+  width: 210px;
+}
+
+.unido_logo_footer {
+  width: 260px;
+}
+
+.kp_logo_footer {
+  width: 85px;
+}
+
+.footer_content {
+  margin-right: 100px;
+  width: calc(100% - 100px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.share_heading {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.social_buttons {
+  display: flex;
+  align-items: center;
+  width: 240px;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 840px) {
+  .pafaid_logo {
+    width: 250px;
+  }
+  .titleHeading > h1 {
+    font-family: 'Playfair Display', serif !important;
+    color: white !important;
+    font-weight: 500;
+    font-size: 40px;
+    margin-top: -25px;
+    padding: 0px 20px;
+  }
+
+  div.descriptContain p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+  .footer_content {
+    margin-right: 40px;
+    width: calc(100% - 40px);
+  }
+  .pafaid_logo_footer {
+    width: 120px;
+  }
+
+  .unido_logo_footer {
+    width: 170px;
+  }
+
+  .kp_logo_footer {
+    width: 65px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .accessBarsViz {
+    width: 525px !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .pafaid_logo {
+    width: 200px;
+  }
+  .titleHeading > h1 {
+    font-size: 35px;
+    margin-top: -15px;
+  }
+  div.descriptContain p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .popVizSVG, .accessBarsViz, .genderGap, .sHMap, .sHVol, .butchPriceHists  {
+    width: 90% !important;
+    margin-left: 5%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footer_content {
+    margin-right: 0px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .footer_content {
+    margin-right: 0px;
+    width: 100%;
+    flex-direction: column;
+  }
+  .unido_logo_footer {
+    margin: 15px 0px;
+  }
 }
