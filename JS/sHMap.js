@@ -17,9 +17,9 @@ function drawSHMap(){
                         .domain([0, 1])
                         .range(['#e0ecf4', d3.rgb('#8856a7').darker()])
 
-    const title = "Distribution of Slaughter-houses across KP";
+    const title = "Distribution of Slaughterhouses across KP";
     const subTitle = "Directorate of Veterinary Public Health";
-    const note = 'Circles with dark grey strokes signify share of slaughter-houses under Cantonment Board'
+    const note = 'Circles with dark grey strokes signify share of slaughterhouses under Cantonment Board'
 
     function appendTitle(main, center, styles, svgSelection, pos){
       const svgWidth = 500;
@@ -90,7 +90,6 @@ function drawSHMap(){
       const KPGeo = await d3.json('GeoData/KP.topojson');
 
       const KPFeatures = topojson.feature(KPGeo, KPGeo.objects.KP).features;
-      console.log(KPFeatures);
 
       drawBaseMap(
         //geodata params
@@ -153,12 +152,11 @@ function drawSHMap(){
           'fill-opacity': 1
         });
 
-        makeNestCircLegend(svg, [400, 500], [1, 5], radScale, 'Number of Slaughter-houses', '');
+        makeNestCircLegend(svg, [400, 500], [1, 5], radScale, 'Number of Slaughterhouses', '');
         drawContLegend(svg, [20, 150], 0, 100, ['#e0ecf4', d3.rgb('#8856a7').darker()], 'black');
 
         svg.selectAll('circle.shcirc').on('mouseover', function(d, i){
           const datum = d3.select(this).datum();
-          console.log(datum)
           const district = datum['districts'];
           const SHs = datum['SHs'];
           const FSHs = datum['FuncSHs'];
@@ -167,7 +165,6 @@ function drawSHMap(){
           const eventX = d3.event.x;
           const eventY = d3.event.y;
 
-          console.log(eventX, eventY);
           d3.select('div.sHMapContain').append('div')
                           .classed('tooltip', true)
                           .html(
@@ -175,7 +172,7 @@ function drawSHMap(){
                             `
                               <p>
                                 <span class='varName'>District</span>: <span>${district}</span><br>
-                                <span class='varName'>Slaughter-house(s)</span>: <span>${SHs}</span><br>
+                                <span class='varName'>Slaughterhouse(s)</span>: <span>${SHs}</span><br>
                                 <span class='varName'>Functional</span>: <span>${FSHs}</span><br>
                                 <span class='varName'>In Cantt.</span>: <span>${CSHs}</span>
                               </p>

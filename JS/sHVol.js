@@ -36,7 +36,7 @@ function drawSurveySH(){
       .attr('class', 'title')
       .attr('x', '300px')
       .attr('y', '15px')
-      .text('Capacity of Slaughter-houses')
+      .text('Capacity of Slaughterhouses')
       .styles(
         {
           'text-anchor': 'middle',
@@ -63,7 +63,7 @@ function drawSurveySH(){
       .attr('class', 'bottom-note')
       .attr('x', '300px')
       .attr('y', '710px')
-      .text('The bubbles corrresponding to each Slaughter-house do not show exact geo-location as they have been offset to avoid overlap')
+      .text('The bubbles corresponding to each Slaughterhouse do not show exact geo-location as they have been offset to avoid overlap')
       .styles(
         {
           'text-anchor': 'middle',
@@ -197,8 +197,6 @@ function drawSurveySH(){
 
     // let the simulation run
     for (var i = 0; i < 5000; ++i) simulation.tick();
-
-    console.log(SHData);
 
     makeNestCircLegend(CSSSelect = 'svg.sHVol', [130, 650], [50, 200, 400], radScale1, 'Animals Slaughtered (Per day)');
     drawContLegend(
@@ -378,10 +376,6 @@ function drawSurveySH(){
                             <span class='varName'>Animals Slaughtered: </span> <span>${datum.total_Animals}</span><br>
                             <span class='varName'>Small Animals: </span> <span>${datum.small_ruminant}</span><br>
                             <span class='varName'>Big Animals: </span> <span>${datum.big_ruminant}</span><br>
-                            <span class='varName'></span><br>
-                            <span class='categName'>FOOD SAFETY</span><br>
-                            <span class='varName'>Good Manufacturing: </span> <span class=${(datum.food_safetygood_manufactu == 1) ? 'spanYes' : 'spanNo'}>${(datum.food_safetygood_manufactu == 1) ? 'Yes' : 'No'}</span><br>
-                            <span class='varName'>HACCP: </span> <span class=${(datum.food_safetyhaccp == 1) ? 'spanYes' : 'spanNo'}>${(datum.food_safetyhaccp == 1) ? 'Yes' : 'No'}</span>
                           </p>
                         `
                       )
@@ -414,7 +408,6 @@ function drawSurveySH(){
 
   async function getGeoData(topoJSONFilename, getName){
     const JSON = await d3.json(topoJSONFilename);
-    console.log(JSON);
     return topojson.feature(JSON, JSON.objects[getName]).features;
   }
 

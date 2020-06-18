@@ -27,8 +27,8 @@ function drawPopMap(){
 
   const VCAObj = {
     Farmers: "Farmers",
-    SlaughterHouses: "Slaughter-houses",
-    ButcherShops: "Butcher-shops",
+    SlaughterHouses: "Slaughterhouses",
+    ButcherShops: "Butcher shops",
     Middlemen: "Middlemen"
   }
 
@@ -53,6 +53,21 @@ function drawPopMap(){
           'font-size': '20px',
           'font-family': "'Roboto', sans-serif",
           'font-weight': 400
+        }
+      );
+
+    svg.append('text')
+      .attr('class', 'tehsilNote')
+      .attr('x', '300px')
+      .attr('y', '45px')
+      .text('Tehsil is a tertiary administrative territory in Pakistan, after provinces and districts')
+      .styles(
+        {
+          'text-anchor': 'middle',
+          'font-size': '12px',
+          'font-family': "'Roboto', sans-serif",
+          'font-weight': 300,
+          'fill': '#212121'
         }
       );
 
@@ -164,11 +179,11 @@ function drawPopMap(){
                         .domain([0, 4])
                         .range([0, 10]);
 
-    makeNestCircLegend(CSSSelect = 'svg', [100, 650], [10, 40, 100], radScale1, ['Farmers and', 'Butcher-shops']);
-    makeNestCircLegend(CSSSelect = 'svg', [280, 650], [1, 4], radScale2, ['Slaughter-houses', 'and Middlemen']);
+    makeNestCircLegend(CSSSelect = 'svg', [100, 650], [10, 40, 100], radScale1, ['Farmers and', 'Butcher Shops']);
+    makeNestCircLegend(CSSSelect = 'svg', [280, 650], [1, 4], radScale2, ['Slaughterhouses', 'and Middlemen']);
 
     const ordCol = d3.scaleOrdinal()
-      .domain(["Farmers", "Butcher-shops", "Slaughter-Houses", "Middlemen"])
+      .domain(["Farmers", "Butcher Shops", "slaughterhouses", "Middlemen"])
       .range(['#a6cee3','#1f78b4','#b2df8a', '#33a02c']);
 
     svg.append("g")

@@ -107,6 +107,46 @@
     justify-content: center;
   }
 
+  .accessBarsViz {
+    font-family: 'Roboto', sans-serif;
+  }
+  .accessBarsViz g.axis.x {
+    font-size: 12px;
+  }
+
+  .accessBarsViz g.axis.y {
+    font-size: 12px;
+  }
+
+  .accessBarsViz g.legendOrdinal {
+    font-size: 12px;
+  }
+
+  .accessBarsViz g.axis.y path, line {
+    stroke: none;
+  }
+
+  .accessBarsViz g.grid line {
+    stroke: lightgrey;
+    stroke-opacity: 0.7;
+    shape-rendering: crispEdges;
+  }
+  .accessBarsViz g.grid path {
+    stroke: none;
+  }
+
+  svg.butchPriceHists g.axis path, line {
+    fill: none;
+    stroke: none;
+
+  }
+
+  svg.butchPriceHists g.axis {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+  }
+
 </style>
 <body>
   <div class="root">
@@ -116,12 +156,16 @@
     <div class="headingContain">
       <h1>Meat loving Khyber Pakhtunkhwa</h1>
     </div>
+    <div class="imgContain">
+      <img src="img/meat1.jpg" alt="" width="1440px">
+      <!-- <img src="img/meat2.jpg" alt="" width="500px"> -->
+    </div>
     <div class="descriptContain">
       <p>
         Meat is an important part of the diet and culture of the inhabitants of Khyber Pakhtunkhwa (KP) province in Pakistan. The PAFAID aims to target meat value chain actors in Abbottabad, D.I. Khan, Kohistan and Peshawar districts within Khyber Pakhtunkhwa.
       </p>
       <p>
-        Within these districts, <span class="dataText">12000</span> people make their living as part of the cattle meat value chain, working as herders, middlemen, animal processors in slaughterhouses or butchers.In the inception phase of the project populations of the various value chain actors/ components including cattle farmers, butchers, middlemen and slaughter-houses were estimated and a proportional sample was drawn for a baseline survey. The samples drawn at the tehsil level in the four districts are visualized below.
+        Within these districts, <span class="dataText">12000</span> people make their living as part of the cattle meat value chain, working as herders, middlemen, animal processors in slaughterhouses or butchers.In the inception phase of the project populations of the various value chain actors/ components including cattle farmers, butchers, middlemen and slaughterhouses were estimated and a proportional sample was drawn for a baseline survey. The samples drawn at the tehsil level in the four districts are visualized below.
       </p>
     </div>
     <div class="popVizContain">
@@ -160,16 +204,20 @@
         Like slaughterhouses, butcher shops are also unable to comply with food safety requirements to meet local and international regulations. This is despite a network of diligent inspectors who visit meat related businesses and follow up with them on their practices. The ongoing joint efforts of the Agriculture Department, Local Government Department and Khyber Pakhtunkhwa Food Safety and Halal Food Authority (KPFSHFA) on enforcing existing food safety regulations are acknowledged to help improve food safety conditions of these meat shops, however, further improvement can be considered in this area based on international best practices. Unhygienic conditions in meat shops result in mass consumption of unsafe meat which can potentially put the lives of innumerable consumers in Khyber Pakhtunkhwa at risk. Meat sold in unhygienic conditions can lead to severe foodborne illnesses which in general leads to a productivity loss of <span>$1.5 billion</span> per year in Pakistan through higher health care costs and inability to work or decreased productivity of consumers. (<i>Source: The World Bank: The Safe Food Imperative</i>).
       </p>
     </div>
-    <div class="chartImgContain">
-      <img src="img/BSAccess.png" alt="" width="45%">
+    <div id="accessBars">
+      <svg class ="accessBarsViz" width = "650px" viewBox = "0 0 620 400"></svg>
+    </div>
+    <div class="imgContain">
+      <img src="img/meat4.jpg" alt="" width="600px">
+      <!-- <img src="img/meat2.jpg" alt="" width="500px"> -->
     </div>
     <div class="descriptContain">
       <p>
-        Many of the butcher shops that process and sell meat also do not have access to  electricity, clean running water and adequate cold storage facilities, thus compromising hygiene as well as market competitiveness. PAFAID's survey found that <span class="dataText">23%</span> of the butcher shops reported not having access to electricity, <span class="dataText">32%</span> reported no access to running water whereas <span class="dataText">47%</span> reported not having access to a cold storage facility. A tehsil wise breakdown of the above data is presented in the following visualization.
+        Many of the butcher shops that process and sell meat also do not have access to  electricity, clean running water and adequate cold storage facilities, thus compromising hygiene as well as market competitiveness. PAFAID's survey found that <span class="dataText">23%</span> of the butcher shops reported not having access to electricity, <span class="dataText">32%</span> reported no access to running water whereas <span class="dataText">47%</span> reported not having access to a cold storage facility. Lack of basic facilities also reduces opportunities for economic growth originating from higher profit margins in high end markets. The distribution of meat price reported by butchers in the surveyed districts is provided below.
       </p>
     </div>
-    <div class="accessContain">
-      <svg class ="accessViz" width = "550px" viewBox = "0 0 500 500"></svg>
+    <div id="butchPrice">
+      <svg class ="butchPriceHists" width = "600px" viewBox = "0 0 600 630"></svg>
     </div>
     <div class="descriptContain">
       <p>
@@ -178,8 +226,14 @@
       <p>
         UNIDO works on the enhancement of the productive and compliance capacities of relevant actors in the cattle meat value chain in Khyber Pakhtunkhwa so as to contribute to poverty reduction through economic growth. If you want to learn more about our project and hear about upcoming events, please subscribe to our monthly newsletter or visit our website <a href="https://www.pafaid.org">www.pafaid.org</a>
       </p>
-
     </div>
+    <!-- <div class="accessContain">
+      <svg class ="accessViz" width = "550px" viewBox = "0 0 500 500"></svg>
+    </div> -->
+    <!-- <div class="descriptContain">
+
+
+    </div> -->
 
 
 
@@ -189,7 +243,8 @@
   <script src="JS/sHMap.js"></script>
   <script src="JS/sHVol.js"></script>
   <script src="JS/gGap.js"></script>
-  <script src="JS/access.js"></script>
+  <script src="JS/accessBars.js"></script>
+  <script src="JS/butchPriceHists.js"></script>
 </body>
 </html>
 <!DOCTYPE html>
