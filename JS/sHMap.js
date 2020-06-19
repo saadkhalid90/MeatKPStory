@@ -17,8 +17,8 @@ function drawSHMap(){
                         .domain([0, 1])
                         .range(['#e0ecf4', d3.rgb('#8856a7').darker()])
 
-    const title = "Distribution of Slaughterhouses across KP";
-    const subTitle = "Directorate of Veterinary Public Health";
+    const title = "Distribution of slaughterhouses across KP";
+    const subTitle = "Source: Directorate of Veterinary Public Health";
     const note = 'Circles with dark grey strokes signify share of slaughterhouses under Cantonment Board'
 
     function appendTitle(main, center, styles, svgSelection, pos){
@@ -53,22 +53,24 @@ function drawSHMap(){
       true,
       {
         title: {
-          fill: 'black',
+          fill: '#DF4F57',
           'text-anchor': 'middle',
-          'font-size': '18px',
-          'font-family': 'Roboto, sans-serif'
+          'font-size': '20px',
+          'font-family': 'Roboto, sans-serif',
+          'font-weight': 500
         },
         subTitle: {
-          fill: 'black',
+          fill: '#DF4F57',
           'text-anchor': 'middle',
-          'font-size': '12px',
-          'font-family': 'Roboto, sans-serif'
+          'font-size': '12.6px',
+          'font-family': 'Roboto, sans-serif',
+          'font-weight': 400
         },
       },
       svg,
       {
         title: [0.05, 0.05],
-        subTitle: [0.05, 0.09],
+        subTitle: [0.05, 0.085],
       }
     )
 

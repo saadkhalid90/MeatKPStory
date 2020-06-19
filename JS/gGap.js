@@ -33,10 +33,11 @@ function drawGenderGap(){
         y: 25
       })
       .styles({
-        fill: 'black',
+        fill: '#DF4F57',
         'text-anchor': 'middle',
         'font-family': "'Roboto', sans-serif",
-        'font-size':  '20px'
+        'font-size':  '22px',
+        'font-weight': 500
       });
 
     svg.append('text')
@@ -47,10 +48,11 @@ function drawGenderGap(){
         y: 45
       })
       .styles({
-        fill: 'black',
+        fill: '#DF4F57',
         'text-anchor': 'middle',
         'font-family': "'Roboto', sans-serif",
-        'font-size':  '12px'
+        'font-size':  '14px',
+        'font-weight': 400
       });
 
     const barGrp = svgG.selectAll('g.barGrp')

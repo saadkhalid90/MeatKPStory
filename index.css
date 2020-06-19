@@ -91,6 +91,10 @@ div.sHMapContain {
   font-family: 'Roboto', sans-serif;
 }
 
+div#accessBars {
+  margin-top: 20px;
+}
+
 div.descriptContain p {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -223,7 +227,8 @@ svg.butchPriceHists g.axis {
 }
 
 .unido_logo_footer {
-  width: 260px;
+  width: 110px;
+  margin: 0px 20px;
 }
 
 .kp_logo_footer {
@@ -281,7 +286,7 @@ svg.butchPriceHists g.axis {
   }
 
   .unido_logo_footer {
-    width: 170px;
+    width: 90px;
   }
 
   .kp_logo_footer {

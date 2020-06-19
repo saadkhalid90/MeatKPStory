@@ -1,8 +1,7 @@
 function drawAccessBars(){
   async function readAndDraw(){
-    console.log('run!')
     // set the dimensions and margins of the graph
-    var margin = {top: 60, right: 30, bottom: 100, left: 70},
+    var margin = {top: 70, right: 30, bottom: 100, left: 70},
         width = 620 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
@@ -13,12 +12,14 @@ function drawAccessBars(){
         .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
 
-    svg.append('text')
+    d3.select("svg.accessBarsViz").append('text')
       .text('Access to Electricity, Water and Cold Storage for Butcher shops')
-      .attr('x', 0)
-      .attr('y', -40)
-      .style('text-anchor', 'start')
-      .style('font-size', '18px');
+      .attr('x', 310)
+      .attr('y', 15)
+      .style('text-anchor', 'middle')
+      .style('font-size', '20px')
+      .style('fill', '#DF4F57')
+      .style('font-weight', 500);
 
     // Parse the Data
     let data = await d3.csv("Data/BSAccess.csv");

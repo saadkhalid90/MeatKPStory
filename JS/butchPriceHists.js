@@ -30,15 +30,17 @@ function drawButchPriceHists(){
       'font-family': "'Roboto', sans-serif"
     })
 
-  svg.append('text')
+  d3.select('svg.butchPriceHists').append('text')
     .attr('class', 'Title')
-    .text(`Distribition of Per KG Meat Price reported by Butchers`)
-    .attr('x', '20px')
-    .attr('y', '-60px')
+    .text(`Distribution of meat price per kilogram reported by butchers`)
+    .attr('x', '300px')
+    .attr('y', '20px')
     .styles({
-      'text-anchor': 'start',
+      'text-anchor': 'middle',
       'font-family': "'Roboto', sans-serif",
-      'font-size': '18px'
+      'font-size': '22px',
+      'font-weight': 500,
+      'fill': '#DF4F57'
     })
 
   const svg_g = svg

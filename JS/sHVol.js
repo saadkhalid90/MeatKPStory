@@ -35,27 +35,30 @@ function drawSurveySH(){
     svg.append('text')
       .attr('class', 'title')
       .attr('x', '300px')
-      .attr('y', '15px')
-      .text('Capacity of Slaughterhouses')
+      .attr('y', '20px')
+      .text('Capacity of slaughterhouses')
       .styles(
         {
           'text-anchor': 'middle',
-          'font-size': '18px',
-          'font-family': "'Roboto', sans-serif"
+          'font-size': '22px',
+          'font-family': "'Roboto', sans-serif",
+          'fill': '#DF4F57',
+          'font-weight': 500
         }
       );
 
     svg.append('text')
       .attr('class', 'sub-title')
       .attr('x', '300px')
-      .attr('y', '35px')
-      .text('Ruminants Slaughtered Per Day')
+      .attr('y', '42px')
+      .text('Ruminants slaughtered per day')
       .styles(
         {
           'text-anchor': 'middle',
-          'font-size': '12px',
+          'font-size': '14px',
           'font-family': "'Roboto', sans-serif",
-          'font-weight': 300
+          'font-weight': 400,
+          'fill': '#DF4F57'
         }
       );
 

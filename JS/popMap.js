@@ -46,28 +46,29 @@ function drawPopMap(){
       .attr('class', 'title')
       .attr('x', '300px')
       .attr('y', '25px')
-      .text('Tehsil-wise Sample Sizes of Major Meat Value Chain Actors')
+      .text('Tehsil-wise sample sizes of major meat value chain actors')
       .styles(
         {
           'text-anchor': 'middle',
-          'font-size': '20px',
+          'font-size': '22px',
           'font-family': "'Roboto', sans-serif",
-          'font-weight': 400
+          'font-weight': 500,
+          'fill': '#DF4F57'
         }
       );
 
     svg.append('text')
       .attr('class', 'tehsilNote')
       .attr('x', '300px')
-      .attr('y', '45px')
+      .attr('y', '47px')
       .text('Tehsil is a tertiary administrative territory in Pakistan, after provinces and districts')
       .styles(
         {
           'text-anchor': 'middle',
-          'font-size': '12px',
+          'font-size': '14px',
           'font-family': "'Roboto', sans-serif",
-          'font-weight': 300,
-          'fill': '#212121'
+          'font-weight': 400,
+          'fill': '#DF4F57'
         }
       );
 
@@ -520,8 +521,6 @@ function drawPopMap(){
       const eventX = d3.event.x;
       const eventY = d3.event.y;
 
-
-      console.log(eventX, eventY);
       d3.select('body').append('div')
                       .classed('tooltip', true)
                       .html(

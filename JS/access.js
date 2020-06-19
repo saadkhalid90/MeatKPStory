@@ -1,7 +1,6 @@
 function drawAccessHM(){
   async function readAndDraw(){
     const tehsilSum = await d3.csv('Data/tehsilSum.csv');
-    console.log(tehsilSum);
 
     const margin = {
       top: 150,
