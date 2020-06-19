@@ -218,8 +218,8 @@ svg.butchPriceHists g.axis {
   align-items: center;
 }
 
-.pafaid_logo_footer {
-  width: 210px;
+.jica_logo_footer {
+  width: 110px;
 }
 
 .unido_logo_footer {
@@ -231,8 +231,8 @@ svg.butchPriceHists g.axis {
 }
 
 .footer_content {
-  margin-right: 100px;
-  width: calc(100% - 100px);
+  margin-right: 0px;
+  width: calc(100% - 0px);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -273,11 +273,11 @@ svg.butchPriceHists g.axis {
     margin-right: 15%;
   }
   .footer_content {
-    margin-right: 40px;
-    width: calc(100% - 40px);
+    margin-right: 0px;
+    width: calc(100% - 0px);
   }
-  .pafaid_logo_footer {
-    width: 120px;
+  .jica_logo_footer {
+    width: 80px;
   }
 
   .unido_logo_footer {
